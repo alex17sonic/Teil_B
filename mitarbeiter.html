@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mitarbeiterseite </title>
+<style>
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #007BFF;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    p {
+        font-size: 18px;
+        color: #333;
+    }
+</style>
+</head>
+<body>
+    <button id="funButton">Please click me!</button>
+    <p id="message">Lass uns Spaß haben!</p>
+    <script>
+        document.getElementById('funButton').addEventListener('click', function() {
+            const message = document.getElementById('message');
+            const messages = [
+                'Es grüßt Dich Nico aus der Personalabteilung',
+                'Alex ist der Schöpfer dieses Skripts!',
+                'Stefan wird bald zurück sein!',
+                'Hören Sie nicht auf, Sie werden bald alle Mitarbeiter kennenlernen!',
+                'Yuppies, das ist Alina!'
+            ];
+            let clickCount = message.getAttribute('data-click-count') || 0;
+
+            if (clickCount < messages.length) {
+                message.textContent = messages[clickCount];
+                message.setAttribute('data-click-count', ++clickCount);
+            } else {
+                message.textContent = 'Jetzt haben Sie alle kennengelernt, herzlichen Glückwunsch.';
+                message.setAttribute('data-click-count', '0');
+            }
+        });
+    </script>
+</body>
+</html>
