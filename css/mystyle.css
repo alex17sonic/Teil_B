@@ -1,12 +1,23 @@
-body {
-       
-    font-family: Arial, sans-serif;
+:root {
+  --background-color: #C98895;
+  --custom-color: #ffaab8;
+  --new-text-color:white;
+  --font-family: 'Arial', sans-serif;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-header, nav, main, footer {
-  width: 100%;
+header,main, nav, aside, footer {
+  padding: 0;
   box-sizing: border-box;
+}
+
+main{
+  padding-left: 10px;
 }
 
 img {
@@ -37,7 +48,7 @@ img {
   background-color: #0000FF; /* Albastru */
   justify-content: flex-end;
   align-items: right;
-  padding-left: 5px; /* Adaugă un padding pentru a nu lipi conținutul de margine */
+  
 }
 
 .right-section {
@@ -73,15 +84,19 @@ img {
 }
 
 nav {
+  display: flex;
   background: #ffffff;
   padding: 10px 0;
+  justify-content: center; /* Centrarea conținutului pe verticală */
+   
 }
 
 nav ul {
-  list-style: none;
   padding: 0;
-  margin: 0;
+  list-style: none;
   text-align: center;
+  
+  
 }
 
 nav ul li {
@@ -91,15 +106,15 @@ nav ul li {
 
 
 nav ul li a {
-    text-decoration: none;
-    color: white;
-    background-color: #0A84FF; 
-    padding: 10px 20px; 
-    border-radius: 5px; 
-    transition: background-color 0.3s; 
-    font-weight: bold; 
-  }
-  
+  display: inline-block; /* sau block, dacă dorești ca linkurile să fie unul sub altul */
+  text-decoration: none;
+  color: white;
+  background-color: #0A84FF;
+  padding: 7px 15px;
+  border-radius: 10px;
+  width: 70px; /* Setează o lățime fixă */
+  text-align: center; /* Alinează textul în centru */
+}
   
   nav ul li a:hover {
     background-color: #ffaab8; /* O nuanță mai închisă la hover */
@@ -111,31 +126,36 @@ nav ul li a {
   }
   
 
-aside {
+  aside {
   background: #f6e5c3;
   padding: 1rem;
   }
-aside p {
+  aside p {
   font-variant: small-caps;
-}
+  }
 
-.derby {
-      display: flex; /* Aplică Flexbox pentru a alinia elementele orizontal */
-      align-items: center; /* Centrează elementele pe verticală */
-      background: #f6e5c3;
-      padding: 1rem;
+  .derby {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center; /* Centrează elementele pe verticală */
+    background: #f6e5c3;
+      
+      
+  }
+
+  .derby h3 {
+    font-size: 20px;
+    margin: 0; /* elimină marginile implicite */
   }
   
-.derby img {
+  .derby img {
       height: 140px; /* Ajustează înălțimea imaginii dacă este necesar */
       margin-right: 20px; /* Adaugă un spațiu între imagine și text */
   }
   
-.derby h2, .derby p {
-      margin: 0; /* Elimină marginile implicite pentru a controla mai bine spațiul */
-  }
+ 
   
-footer {
+  footer {
       padding: 0.5rem;
       border-top: 0.1rem solid #877D6C;
       width: 100%;
@@ -149,3 +169,53 @@ footer {
     font-style: normal;
   }
   
+@media (min-width: 768px) {
+    .container {
+        display: flex;
+    }
+
+    nav {
+      flex: 0 0 25%;
+      order: -1;
+      border-right: 2px solid var(--custom-color); /* separation line */
+      
+    }
+    .left-section {
+    flex: 0 0 25%; /* Același procent ca și 'nav' pentru aliniere */
+    }
+
+    .right-section {
+    flex: 6;
+    }
+
+
+    main {
+        flex: 3;
+    }
+
+    nav ul li {
+      display: block;
+      margin-bottom: 25px;
+    }
+  }
+
+  @media (max-width: 494px) {
+    nav ul {
+    display: flex; /* Aplică Flexbox pe containerul listei */
+    flex-wrap: nowrap; /* Asigură că elementele nu se vor înfășura pe mai multe rânduri */
+    justify-content: center; /* Centrează elementele pe orizontală */
+    align-items: stretch; /* Elementele se vor întinde pentru a ocupa întreaga înălțime a containerului */
+    padding: 0; /* Resetează padding-ul pentru a elimina spațiul nedorit */
+    }
+
+    nav ul li {
+    flex: 1; /* Distribuie spațiul disponibil egal între elemente */
+    margin: 2px; /* Elimină marginile pentru a permite butoanelor să umple întreaga lățime */
+    
+    }
+
+    nav ul li a {
+    width: 100%; /* Forțează butoanele să ocupe întreaga lățime disponibilă */
+    box-sizing: border-box; /* Include padding-ul și border-ul în calculul lățimii */
+    }
+  }
